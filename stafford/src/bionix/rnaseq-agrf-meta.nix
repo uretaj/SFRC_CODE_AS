@@ -1,0 +1,156 @@
+[
+  {
+    AGRFLabel = "84_BL_11552_D";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/84_BL_11552_D_HG3VGDMXX_GCAATGCA-GGAACGTT_L001_R1.fastq.gz";
+    sha512 = "d7d31c26e150e15c0e55b3bc5a0cec78d00799f84c49f885b46530e912d8397ac233263dd8519ec741544ef1ba813a51888b25998fb3f24a50f8dccfacc77763";
+    treatment = "dpbs";
+    group = "GEMM 84 BL (Lineage A)";
+  }
+  {
+    AGRFLabel = "84_BL_11554_E";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/84_BL_11554_E_HG3VGDMXX_GTTCCAAT-AATTCTGC_L001_R1.fastq.gz";
+    sha512 = "8cb34e12431e82091616405f6332f658b073c4311d155a6d75449057ba1ea1c8616ee389d5cb126ad3d5c6a5e155f8f378b8ea5aec4fe9b7da6a1f2c6d9c4d3c";
+    treatment = "eribulin";
+    group = "GEMM 84 BL (Lineage A)";
+  }
+  {
+    AGRFLabel = "95_10830_D";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/95_10830_D_HG3VGDMXX_ACCTTGGC-GGCCTCAT_L001_R1.fastq.gz";
+    sha512 = "16973ca15cb291ef96daa6a8afcbcb7b49072988844a1c768a3024d3c502a4bceece1a023d945c5ea1447ef9e74de44d7217fb4d860f0fa9988d78522f79c3db";
+    treatment = "dpbs";
+    group = "GEMM 95 (Lineage B)";
+  }
+  {
+    AGRFLabel = "95_10831_E";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/95_10831_E_HG3VGDMXX_ATATCTCG-ATCTTAGT_L001_R1.fastq.gz";
+    sha512 = "0494b757a28f366072af2b7a45d2926a720ac8242429eb31f1b1748a890963a4d178f1647f8d16c3256594a417b5825e6598cf45e5ec343079d71aeb1f0891c8";
+    treatment = "eribulin";
+    group = "GEMM 95 (Lineage B)";
+  }
+  {
+    AGRFLabel = "84_10552_E";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/84_10552_E_HG3VGDMXX_GCGCTCTA-GCTCCGAC_L001_R1.fastq.gz";
+    sha512 = "ad33a1092b0bc38f73c6d7e3c7d4e8ea40ad099e1ffd14323028ae550e4d4c768c47141c42b7553efe23fa96ec2f45151bc210a8c65b6439acb333d29b5e3278";
+    treatment = "eribulin";
+    group = "GEMM 84 (Lineage C)";
+  }
+  {
+    AGRFLabel = "GEMM_EARLY_P";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/GEMM_EARLY_P_HG3VGDMXX_GGTGAACC-GCGTTGGA_L001_R1.fastq.gz";
+    sha512 = "83b5968c1481239b2f140816c235aa47034c8aaed6e539b050303a3d094e4dcaec95f68d80f0d5fd654cfcb2d86d57e0ea36a0398882e6918f93553df62c9460";
+    treatment = "na";
+    group = "GEMM CP earlyP P.5.11.2.1";
+  }
+  {
+    AGRFLabel = "GEMM_LATE_P";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/GEMM_LATE_P_HG3VGDMXX_CAACAATG-CTTCACGG_L001_R1.fastq.gz";
+    sha512 = "be66aa55cbb91aedae5e85833f9ceee65f022f9837cbd446713e7457d0654cba1c2e77150fb55b3788dfd4c00ccdc2743da9bc579243ceb6781fa23deaa9c8b5";
+    treatment = "na";
+    group = "GEMM CP lateP P.5.11.2.11";
+  }
+  {
+    AGRFLabel = "GEMM_CL_E_E";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/GEMM_CL_E_E_HG3VGDMXX_AGGCAGAG-AGAATGCC_L001_R1.fastq.gz";
+    sha512 = "2849949d9ebe9146e5e846f4a7f2cbe5bf13e2c2301a06f3b46ea26aaa6f245aee7545686d559145fa48e84b591c91c764735099ef2ea8e140c92dd19e8d1a64";
+    treatment = "eribulin/eribulin";
+    group = "GEMM CL 3D collagen Exp 6";
+  }
+  {
+    AGRFLabel = "GEMM_CL_D_D";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/GEMM_CL_D_D_HG3VGDMXX_GAATGAGA-GAGGCATT_L001_R1.fastq.gz";
+    sha512 = "b9672488322e02fd49978c8a54587fb08dc0f3498d5552180bd3e511c496ba889b7dcb8161f142f8a15cbbce588968b3f585f16470e645f41b109fffcb7a9a2b";
+    treatment = "dmso/dmso";
+    group = "GEMM CL 3D collagen Exp 6";
+  }
+  {
+    AGRFLabel = "GEMM_CL_E_D";
+    fastq = "./AGRF_CAGRF18569_HG3VGDMXX/GEMM_CL_E_D_HG3VGDMXX_TGCGGCGT-CCTCGGTA_L001_R1.fastq.gz";
+    sha512 = "beac52aa266d397a9e13b158b886c58233e03b75b38ce7b7dc9158d078b7a24d14d54ceee0286cb5e2ef0dd17a26e7a97eefbc40eddc645b83ed167a8c233a2b";
+    treatment = "eribulin/dmso";
+    group = "GEMM CL 3D collagen Exp 6 ";
+  }
+  {
+    AGRFLabel = "10844";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/10844_HG3VGDMXX_AAGATACT-ACTTACAT_L001_R1.fastq.gz";
+    sha512 = "02df8b0e4339626b524041293e9f9b2d10bd130b590eee9751427642b2b7f35b6bc2462adad6f3392a06a43740b23002f92dc108573f528331da4b0ebe019227";
+    treatment = "dpbs";
+    group = "PH003: Sarcomatous";
+  }
+  {
+    AGRFLabel = "PH003_10840_E";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH003_10840_E_HG3VGDMXX_CGTTAGAA-TTCAGGTC_L001_R1.fastq.gz";
+    sha512 = "b2eddb8edd043d9fb757428a3361bd3aaa480142380d471310f51e1c81a1cadf411dabafd21db1ac0faf471971a366fdb41e4c4298657d32b8d5ba32dee78090";
+    treatment = "eribulin";
+    group = "PH003: Sarcomatous";
+  }
+  {
+    AGRFLabel = "PH003_10647_D";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH003_10647_D_HG3VGDMXX_AGCCTCAT-AGTAGAGA_L001_R1.fastq.gz";
+    sha512 = "b11d93e7c0d0db0aff85b054f767841691973c230691754cc0a948e141c5659a67638df7ee80894a291647d696c35e53e89cad930944dd1965fb1f21d3f3c20d";
+    treatment = "dpbs";
+    group = "PH003: 50:50 sarcoma/carcinoma";
+  }
+  {
+    AGRFLabel = "PH003_10649_E";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH003_10649_E_HG3VGDMXX_GATTCTGC-GACGAGAG_L001_R1.fastq.gz";
+    sha512 = "aa1a704fcce329e30f7cea286d10a7959081a219966e7ba6f2f140bc4760834eb5d4d77c71eeba01d7730ceaae5578ed5fe1dce627ef3c272c0d9aa323e9f1cb";
+    treatment = "eribulin";
+    group = "PH003: 50:50 sarcoma/carcinoma";
+  }
+  {
+    AGRFLabel = "PH006_10353_D";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH006_10353_D_HG3VGDMXX_TCGTAGTG-AGACTTGG_L001_R1.fastq.gz";
+    sha512 = "6591a7bfc63aabe3dfdff41b68d7e58cd4fcfb26231b039482e99abe830c19a5f27f519b700aaf96e771d9050d6c9ce605e3e4a73d98ab2471d360fc1d6602ce";
+    treatment = "dpbs";
+    group = "PH006";
+  }
+  {
+    AGRFLabel = "PH006_10351_E";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH006_10351_E_HG3VGDMXX_TCGATATC-ACACGAGT_L001_R1.fastq.gz";
+    sha512 = "deeef8bed0f10e82600a32431c2b7ff7654573fafbe267d943d04ae9b6eab51d98d118dbf7819e1ab2c23abab1a4394ab33e9d4254c707ec468579f6625e350e";
+    treatment = "eribulin";
+    group = "PH006";
+  }
+  {
+    AGRFLabel = "11233";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/11233_HG3VGDMXX_GCGCAAGC-TCACGCCG_L001_R1.fastq.gz";
+    sha512 = "6b19a3d518dadf0571085d1632cb7c9a4dbee6fd834cce88f206d44b81a03ac451d001f942c127a1dc0d2f146b8780e602aea5675f0223d3d5af807e3a22e1d6";
+    treatment = "dpbs";
+    group = "PH142";
+  }
+  {
+    AGRFLabel = "PH142_11235_E";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH142_11235_E_HG3VGDMXX_TAAGTGGT-CTTAAGCC_L001_R1.fastq.gz";
+    sha512 = "458a8c60941eeded0dc556bb8ccc521a8e43d4c1f7df7c0399f4d4b3f66b71dbacbe6a95d946c5319cad823f3d01e383b07e9ec5cfa9e6dd4b41d65ba8c6be52";
+    treatment = "eribulin";
+    group = "PH142";
+  }
+  {
+    AGRFLabel = "PH419_10627_D";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH419_10627_D_HG3VGDMXX_CGGACAAC-TCCGGATT_L001_R1.fastq.gz";
+    sha512 = "52e079382917ddb748126a901f3f9c8200771ca4487e206438f691b17042fa11916837e12521d4a3ffb670d81e78bf7394e947906983882552915a6722d83f95";
+    treatment = "dpbs";
+    group = "PH419";
+  }
+  {
+    AGRFLabel = "PH419_10623_E";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/PH419_10623_E_HG3VGDMXX_ATATGGAT-CTGTATTA_L001_R1.fastq.gz";
+    sha512 = "39c2ad2c4ac876e16023f73b0d7fd6b769e01f1d51c807e1391eaabc3dd697422d2f0c227d7ace0a4b0a6369d6d91d94ecd34360e6ba1973432b899497f1652e";
+    treatment = "eribulin";
+    group = "PH419";
+  }
+  {
+    AGRFLabel = "11466";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/11466_HG3VGDMXX_ATGGCATG-AAGGTACC_L001_R1.fastq.gz";
+    sha512 = "5574e9a17bf454791759ac6b5adb6605a6db0120ead2cf765564c62263ffdac65241266b6a9e79254f68251d24a706daa114d4fd5cb6f694cd2731e302ffd5ef";
+    treatment = "dpbs";
+    group = "PH592";
+  }
+  {
+    AGRFLabel = "11462";
+    fastq = "./AGRF_CAGRF18568_HG3VGDMXX/11462_HG3VGDMXX_GGAGCGTC-GTCCGTGC_L001_R1.fastq.gz";
+    sha512 = "67e15b7522ff2414e398770acb68f520c20907428d7aa905dee3b3e8c59545c87b8f4ad850be4186382c1e99c2e77df0e2144d862850f035d3531f3af1190b8c";
+    treatment = "eribulin";
+    group = "PH592";
+  }
+]

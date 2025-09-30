@@ -1,0 +1,10 @@
+This directory houses utilities for converting various databases into
+SQLite DBs. The `import` program converts Octopus VCF into the schema
+outlined in `schema.sql`. The `dbnsfp` program imports a subset of
+columns from the dbNSFP table, normalised into 6NF.
+
+Import usage:
+  import some.db sfrc99999 /path/to/octopus.vcf
+
+dbNSFP usage:
+  dbnsfp some.db /path/to/dbNSFP4.3a.zip

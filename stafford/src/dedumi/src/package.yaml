@@ -1,0 +1,45 @@
+name: dedumi
+licence: BSD3
+version: 0.1
+
+dependencies:
+  - base
+  - fusion-plugin
+  - streaming-commons
+  - cuckoo
+  - microlens-th
+  - microlens
+  - bytestring
+  - streamly-bytestring
+  - streamly-core
+  - ghc-prim
+  - optparse-generic
+
+ghc-options: [-O2, -fdicts-strict, -fspec-constr-recursive=16, -fmax-worker-args=16, -fplugin=Fusion.Plugin, -Wall, -Wno-name-shadowing]
+
+executables:
+  dedumi:
+    main: bin/dedumi.hs
+    other-modules:
+      - Data.FastQ
+      - Dedumi
+
+tests:
+  tests:
+    main: test.hs
+    dependencies:
+      - QuickCheck
+      - temporary
+    other-modules:
+      - Data.FastQ
+
+  bench:
+    main: bench.hs
+    dependencies:
+      - QuickCheck
+      - criterion
+      - temporary
+      - text
+    other-modules:
+      - Data.FastQ
+      - Dedumi

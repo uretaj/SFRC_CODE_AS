@@ -1,0 +1,2 @@
+Filters FQ pairs to remove zero-length reads.
+Does a strict parse to check for errors.

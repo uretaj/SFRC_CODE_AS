@@ -1,0 +1,9 @@
+* annex.largefiles=(largerthan=20480kb)
+*.gz annex.largefiles=anything
+*.xz annex.largefiles=anything
+*.nar annex.largefiles=anything
+*.docx annex.largefiles=anything
+*.png annex.largefiles=anything
+*.pdf annex.largefiles=anything
+*.svg annex.largefiles=anything
+*.rdata annex.largefiles=anything

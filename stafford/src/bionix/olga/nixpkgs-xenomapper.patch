@@ -1,0 +1,59 @@
+From 63e9efd17b34dde62f72036d28e4135e4bcf1d74 Mon Sep 17 00:00:00 2001
+From: Justin Bedo <cu@cua0.org>
+Date: Fri, 17 Jul 2020 16:29:44 +1000
+Subject: [PATCH] wip
+
+---
+ .../science/biology/xenomapper/default.nix    | 30 ++++++++++++++-----
+ 1 file changed, 22 insertions(+), 8 deletions(-)
+
+diff --git a/pkgs/applications/science/biology/xenomapper/default.nix b/pkgs/applications/science/biology/xenomapper/default.nix
+index f5e538c7096..cf23fa3cf5a 100644
+--- a/pkgs/applications/science/biology/xenomapper/default.nix
++++ b/pkgs/applications/science/biology/xenomapper/default.nix
+@@ -1,20 +1,34 @@
+-{buildPythonPackage, lib, fetchFromGitHub, statistics}:
++{buildPythonPackage, lib, fetchFromGitHub, statistics, docopt}:
+ 
+-buildPythonPackage rec {
+-  pname = "xenomapper";
+-  version = "1.0.2";
++let pylazybam = buildPythonPackage rec {
++      pname = "pylazybam";
++      version = "dev";
+ 
+   src = fetchFromGitHub {
+     owner = "genomematt";
+     repo = pname;
+-    rev = "v${version}";
+-    sha256 = "0mnmfzlq5mhih6z8dq5bkx95vb8whjycz9mdlqwbmlqjb3gb3zhr";
++    rev = "9a0ef96c228658546bce1598ead398ccb0450c33";
++    sha256 = "13wm5kxxv7wzgp8qvbl5canhwh6hm7yg5hkcyp8yrhgb4g5817q9";
+   };
++    };
+ 
+-  propagatedBuildInputs = [ statistics ];
++in buildPythonPackage rec {
++  pname = "xenomapper2";
++  version = "dev";
++
++  src = fetchFromGitHub {
++    owner = "genomematt";
++    repo = pname;
++    rev = "905c814815e80b1727d0b2c53e6244e56b3ace20";
++    sha256 = "0gp3k9xh8dx2qghnp9kp1c217dd4j3y54bvxispqp3li9hb13f30";
++  };
++
++  propagatedBuildInputs = [ statistics docopt pylazybam ];
++
++  doCheck = false;
+ 
+   meta = with lib; {
+-    homepage = "https://github.com/genomematt/xenomapper";
++    homepage = "https://github.com/genomematt/xenomapper2";
+     description = "A utility for post processing mapped reads that have been aligned to a primary genome and a secondary genome and binning reads into species specific, multimapping in each species, unmapped and unassigned bins";
+     license = licenses.gpl3;
+     platforms = platforms.all;
+-- 
+2.25.1
+

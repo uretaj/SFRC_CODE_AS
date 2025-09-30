@@ -1,0 +1,5 @@
+## extract from LIMS_23Feb2021_SFRCmetadata.csv
+#SFRC_ID	SampleName	Type	Phenotype	Source	Quality	fastqbase
+SFRC01204	L1900864	WGS	normal	NA	Good	L1900864*.fastq.gz
+SFRC01204	L1900865	WGS	tumor	Tissue	Good	L1900865*.fastq.gz
+SFRC01204	L1900876	WTS	tumor	Tissue	Good	L1900876*.fastq.gz

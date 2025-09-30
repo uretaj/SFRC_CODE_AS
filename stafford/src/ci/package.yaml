@@ -1,0 +1,105 @@
+name: ci
+
+dependencies:
+  - base
+  - optparse-generic
+  - async
+  - inline-c
+  - PyF
+  - wreq
+  - lens
+  - aeson
+  - lens-aeson
+  - dir-traverse
+  - inline-c-cpp
+  - hercules-ci-cnix-store
+  - hercules-ci-cnix-expr
+  - curryer-rpc
+  - ed25519
+  - sqlite-simple
+  - unix
+  - mtl
+  - transformers
+  - bytestring
+  - text
+  - winery
+  - containers
+  - split
+  - filepath
+  - directory
+  - time
+  - xdg-basedir-compliant
+  - http-client
+  - http-client-tls
+  - connection
+  - unliftio-core
+  - unbounded-delays
+
+ghc-options: [-threaded, -Wall, -Wno-name-shadowing, -Wno-unused-do-bind]
+
+executables:
+  upload:
+    main: upload.hs
+    other-modules:
+      - API
+      - Hooks.Onedrive
+      - Hooks.RedCap
+      - Secrets
+      - Directory
+    extra-libraries:
+      - rclone
+
+  evaluator:
+    main: evaluator.hs
+    other-modules:
+      - API
+      - Directory
+
+  server:
+    main: server.hs
+    other-modules:
+      - API
+      - Hooks.Matrix
+      - Hooks.RedCap
+      - Hooks.Onedrive
+      - Secrets
+      - Directory
+    extra-libraries:
+      - rclone
+
+  builder:
+    main: builder.hs
+    other-modules:
+      - API
+      - Directory
+
+  genkey:
+    main: genkey.hs
+
+  addkey:
+    main: addkey.hs
+
+  jobs:
+    main: jobs.hs
+    other-modules:
+      - API
+
+  remove:
+    main: remove.hs
+    other-modules:
+      - API
+
+  retry:
+    main: retry.hs
+    other-modules:
+      - API
+
+  setpri:
+    main: setpri.hs
+    other-modules:
+      - API
+
+  log:
+    main: log.hs
+    other-modules:
+      - API

@@ -1,0 +1,197 @@
+##fileformat=VCFv4.1
+##FILTER=<ID=PASS,Description="All filters passed">
+##FILTER=<ID=indelError,Description="Likely artifact due to indel reads at this position">
+##FILTER=<ID=str10,Description="Less than 10% or more than 90% of variant supporting reads on one strand">
+##FORMAT=<ID=ABQ,Number=1,Type=Integer,Description="Average quality of variant-supporting bases (qual2)">
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=ADF,Number=1,Type=Integer,Description="Depth of variant-supporting bases on forward strand (reads2plus)">
+##FORMAT=<ID=ADR,Number=1,Type=Integer,Description="Depth of variant-supporting bases on reverse strand (reads2minus)">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Quality Read Depth of bases with Phred score >= 20">
+##FORMAT=<ID=FREQ,Number=1,Type=String,Description="Variant allele frequency">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=PVAL,Number=1,Type=String,Description="P-value from Fisher's Exact Test">
+##FORMAT=<ID=RBQ,Number=1,Type=Integer,Description="Average quality of reference-supporting bases (qual1)">
+##FORMAT=<ID=RD,Number=1,Type=Integer,Description="Depth of reference-supporting bases (reads1)">
+##FORMAT=<ID=RDF,Number=1,Type=Integer,Description="Depth of reference-supporting bases on forward strand (reads1plus)">
+##FORMAT=<ID=RDR,Number=1,Type=Integer,Description="Depth of reference-supporting bases on reverse strand (reads1minus)">
+##FORMAT=<ID=SDP,Number=1,Type=Integer,Description="Raw Read Depth as reported by SAMtools">
+##GATKCommandLine.CombineVariants=<ID=CombineVariants,Version=3.4-0-g7e26428,Date="Sat Aug 27 16:22:29 AEST 2016",Epoch=1472278949442,CommandLineOptions="analysis_type=CombineVariants input_file=[] showFullBamList=false read_buffer_size=null phone_home=NO_ET gatk_key=/config/binaries/gatk/3.4/../maria.doyle_petermac.org.key tag=NA read_filter=[] disable_read_filter=[] intervals=null excludeIntervals=null interval_set_rule=UNION interval_merging=ALL interval_padding=0 reference_sequence=/data/reference/indexes/human/g1k_v37/picard/human_g1k_v37.fasta nonDeterministicRandomSeed=false disableDithering=false maxRuntime=-1 maxRuntimeUnits=MINUTES downsampling_type=NONE downsample_to_fraction=null downsample_to_coverage=null baq=OFF baqGapOpenPenalty=40.0 refactor_NDN_cigar_string=false fix_misencoded_quality_scores=false allow_potentially_misencoded_quality_scores=false useOriginalQualities=false defaultBaseQualities=-1 performanceLog=null BQSR=null quantize_quals=0 disable_indel_quals=false emit_original_quals=false preserve_qscores_less_than=6 globalQScorePrior=-1.0 validation_strictness=SILENT remove_program_records=false keep_program_records=false sample_rename_mapping_file=null unsafe=null disable_auto_index_creation_and_locking_when_reading_rods=false no_cmdline_in_header=false sites_only=false never_trim_vcf_format_field=false bcf=false bam_compression=null simplifyBAM=false disable_bam_indexing=false generate_md5=false num_threads=1 num_cpu_threads_per_data_thread=1 num_io_threads=0 monitorThreadEfficiency=false num_bam_file_handles=null read_group_black_list=null pedigree=[] pedigreeString=[] pedigreeValidationType=STRICT allow_intervals_with_unindexed_bam=false generateShadowBCF=false variant_index_type=DYNAMIC_SEEK variant_index_parameter=-1 logging_level=INFO log_to_file=null help=false version=false variant=[(RodBindingCollection [(RodBinding name=Primal source=/pathology/NGS/Samples/Molpath/160826_M01053_0412_000000000-AUV0N/16M6653/VCF/16M6653.Primal.ma.nrm.vcf)]), (RodBindingCollection [(RodBinding name=Canary source=/pathology/NGS/Samples/Molpath/160826_M01053_0412_000000000-AUV0N/16M6653/CAN/16M6653.Canary.ma.nrm.vcf)])] out=/pathology/NGS/Samples/Molpath/160826_M01053_0412_000000000-AUV0N/16M6653/VCF/16M6653.merge.vcf genotypemergeoption=PRIORITIZE filteredrecordsmergetype=KEEP_IF_ANY_UNFILTERED multipleallelesmergetype=BY_TYPE rod_priority_list=Primal,Canary printComplexMerges=false filteredAreUncalled=false minimalVCF=false excludeNonVariants=false setKey=Identified assumeIdenticalSamples=false minimumN=1 suppressCommandLineHeader=false mergeInfoWithMaxAC=false filter_reads_with_N_cigar=false filter_mismatching_base_and_quals=false filter_bases_not_stored=false">
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+##INFO=<ID=ADP,Number=1,Type=Integer,Description="Average per-sample depth of bases with Phred score >= 20">
+##INFO=<ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+##INFO=<ID=AN,Number=1,Type=Integer,Description="Total number of alleles in called genotypes">
+##INFO=<ID=HET,Number=1,Type=Integer,Description="Number of samples called heterozygous-variant">
+##INFO=<ID=HGVSc,Number=1,Type=String,Description="HGVSc format of variant">
+##INFO=<ID=HGVSg,Number=1,Type=String,Description="HGVSg format of variant">
+##INFO=<ID=HGVSp,Number=1,Type=String,Description="HGVSp format of variant">
+##INFO=<ID=HOM,Number=1,Type=Integer,Description="Number of samples called homozygous-variant">
+##INFO=<ID=Identified,Number=1,Type=String,Description="Source VCF for the merged record in CombineVariants">
+##INFO=<ID=NC,Number=1,Type=Integer,Description="Number of samples not called">
+##INFO=<ID=OLD_MULTIALLELIC,Number=1,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=OLD_VARIANT,Number=.,Type=String,Description="Original chr:pos:ref:alt encoding">
+##INFO=<ID=WT,Number=1,Type=Integer,Description="Number of samples called reference (wild-type)">
+##INFO=<ID=ampbias,Number=1,Type=String,Description="is there a bias across amplicons for variant">
+##INFO=<ID=amps,Number=1,Type=String,Description="Amplicon names with variant">
+##INFO=<ID=fsRescue,Number=1,Type=String,Description="Can variant be rescued from a frameshift in phase">
+##INFO=<ID=gene,Number=1,Type=String,Description="gene of variant">
+##INFO=<ID=homopolymer,Number=1,Type=String,Description="Is variant next to a homopolymer run">
+##INFO=<ID=lrg,Number=1,Type=String,Description="LRG transcript of variant">
+##INFO=<ID=muterr,Number=1,Type=String,Description="Mutalyzer error message for variant">
+##INFO=<ID=numAmps,Number=1,Type=String,Description="Number of amplicons with variant / amplicons including locus">
+##INFO=<ID=status,Number=1,Type=String,Description="Mutalyzer status of variant">
+##contig=<ID=1,length=249250621,assembly=b37>
+##contig=<ID=2,length=243199373,assembly=b37>
+##contig=<ID=3,length=198022430,assembly=b37>
+##contig=<ID=4,length=191154276,assembly=b37>
+##contig=<ID=5,length=180915260,assembly=b37>
+##contig=<ID=6,length=171115067,assembly=b37>
+##contig=<ID=7,length=159138663,assembly=b37>
+##contig=<ID=8,length=146364022,assembly=b37>
+##contig=<ID=9,length=141213431,assembly=b37>
+##contig=<ID=10,length=135534747,assembly=b37>
+##contig=<ID=11,length=135006516,assembly=b37>
+##contig=<ID=12,length=133851895,assembly=b37>
+##contig=<ID=13,length=115169878,assembly=b37>
+##contig=<ID=14,length=107349540,assembly=b37>
+##contig=<ID=15,length=102531392,assembly=b37>
+##contig=<ID=16,length=90354753,assembly=b37>
+##contig=<ID=17,length=81195210,assembly=b37>
+##contig=<ID=18,length=78077248,assembly=b37>
+##contig=<ID=19,length=59128983,assembly=b37>
+##contig=<ID=20,length=63025520,assembly=b37>
+##contig=<ID=21,length=48129895,assembly=b37>
+##contig=<ID=22,length=51304566,assembly=b37>
+##contig=<ID=X,length=155270560,assembly=b37>
+##contig=<ID=Y,length=59373566,assembly=b37>
+##contig=<ID=MT,length=16569,assembly=b37>
+##contig=<ID=GL000207.1,length=4262,assembly=b37>
+##contig=<ID=GL000226.1,length=15008,assembly=b37>
+##contig=<ID=GL000229.1,length=19913,assembly=b37>
+##contig=<ID=GL000231.1,length=27386,assembly=b37>
+##contig=<ID=GL000210.1,length=27682,assembly=b37>
+##contig=<ID=GL000239.1,length=33824,assembly=b37>
+##contig=<ID=GL000235.1,length=34474,assembly=b37>
+##contig=<ID=GL000201.1,length=36148,assembly=b37>
+##contig=<ID=GL000247.1,length=36422,assembly=b37>
+##contig=<ID=GL000245.1,length=36651,assembly=b37>
+##contig=<ID=GL000197.1,length=37175,assembly=b37>
+##contig=<ID=GL000203.1,length=37498,assembly=b37>
+##contig=<ID=GL000246.1,length=38154,assembly=b37>
+##contig=<ID=GL000249.1,length=38502,assembly=b37>
+##contig=<ID=GL000196.1,length=38914,assembly=b37>
+##contig=<ID=GL000248.1,length=39786,assembly=b37>
+##contig=<ID=GL000244.1,length=39929,assembly=b37>
+##contig=<ID=GL000238.1,length=39939,assembly=b37>
+##contig=<ID=GL000202.1,length=40103,assembly=b37>
+##contig=<ID=GL000234.1,length=40531,assembly=b37>
+##contig=<ID=GL000232.1,length=40652,assembly=b37>
+##contig=<ID=GL000206.1,length=41001,assembly=b37>
+##contig=<ID=GL000240.1,length=41933,assembly=b37>
+##contig=<ID=GL000236.1,length=41934,assembly=b37>
+##contig=<ID=GL000241.1,length=42152,assembly=b37>
+##contig=<ID=GL000243.1,length=43341,assembly=b37>
+##contig=<ID=GL000242.1,length=43523,assembly=b37>
+##contig=<ID=GL000230.1,length=43691,assembly=b37>
+##contig=<ID=GL000237.1,length=45867,assembly=b37>
+##contig=<ID=GL000233.1,length=45941,assembly=b37>
+##contig=<ID=GL000204.1,length=81310,assembly=b37>
+##contig=<ID=GL000198.1,length=90085,assembly=b37>
+##contig=<ID=GL000208.1,length=92689,assembly=b37>
+##contig=<ID=GL000191.1,length=106433,assembly=b37>
+##contig=<ID=GL000227.1,length=128374,assembly=b37>
+##contig=<ID=GL000228.1,length=129120,assembly=b37>
+##contig=<ID=GL000214.1,length=137718,assembly=b37>
+##contig=<ID=GL000221.1,length=155397,assembly=b37>
+##contig=<ID=GL000209.1,length=159169,assembly=b37>
+##contig=<ID=GL000218.1,length=161147,assembly=b37>
+##contig=<ID=GL000220.1,length=161802,assembly=b37>
+##contig=<ID=GL000213.1,length=164239,assembly=b37>
+##contig=<ID=GL000211.1,length=166566,assembly=b37>
+##contig=<ID=GL000199.1,length=169874,assembly=b37>
+##contig=<ID=GL000217.1,length=172149,assembly=b37>
+##contig=<ID=GL000216.1,length=172294,assembly=b37>
+##contig=<ID=GL000215.1,length=172545,assembly=b37>
+##contig=<ID=GL000205.1,length=174588,assembly=b37>
+##contig=<ID=GL000219.1,length=179198,assembly=b37>
+##contig=<ID=GL000224.1,length=179693,assembly=b37>
+##contig=<ID=GL000223.1,length=180455,assembly=b37>
+##contig=<ID=GL000195.1,length=182896,assembly=b37>
+##contig=<ID=GL000212.1,length=186858,assembly=b37>
+##contig=<ID=GL000222.1,length=186861,assembly=b37>
+##contig=<ID=GL000200.1,length=187035,assembly=b37>
+##contig=<ID=GL000193.1,length=189789,assembly=b37>
+##contig=<ID=GL000194.1,length=191469,assembly=b37>
+##contig=<ID=GL000225.1,length=211173,assembly=b37>
+##contig=<ID=GL000192.1,length=547496,assembly=b37>
+##reference=file:///data/reference/indexes/human/g1k_v37/picard/human_g1k_v37.fasta
+##source=VarScan2
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	16M6653
+chr9	33675364	.	TA	T	.	PASS	AC=1;ADP=361;AF=0.500;AN=2;HET=1;HGVSg=chr9:g.33675365del;HOM=0;Identified=Primal;NC=0;OLD_VARIANT=9:33675366:AA/A;WT=0;muterr=No_transcripts_found	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:40:30:0:30:361:8.43%:9:4.9043E-10:39:324:0:324:364
+chr9	33675427	.	TA	T	.	PASS	AC=1;ADP=363;AF=0.500;AN=2;HET=1;HGVSg=chr9:g.33675428del;HOM=0;Identified=Primal;NC=0;OLD_VARIANT=9:33675435:AA/A;WT=0;muterr=No_transcripts_found	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:35:0:35:363:9.78%:10:1.2057E-11:39:320:0:320:364
+chr10	89690743	.	CT	C	.	PASS	AC=1;ADP=1362;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.210-59del;HGVSg=chr10:g.89690744del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89690750:TT/T;WT=0;amps=PTEN_4_1;homopolymer=T;lrg=LRG_311t1:c.210-59del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:128:128:0:1362:9.43%:38:8.6176E-39:39:1228:1228:0:1363
+chr10	89692731	.	GT	G,GTT	.	PASS	AC=1,0;AF=0.500,0.00;AN=2;HET=1;HOM=0;Identified=Intersection;NC=0;WT=0;amps=PTEN_5_1;homopolymer=T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:40:173:0:1574:10.99%:52:5.1059E-53:39:1396:1396:0:1577
+chr10	89692913	.	G	A	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.397G>A;HGVSg=chr10:g.89692913G>A;HGVSp=NP_000305.3:p.(Val133Ile);Identified=Canary;ampbias=0.18;amps=PTEN_5_2;gene=PTEN;lrg=LRG_311t1:c.397G>A;numAmps=1/2	GT:AD:DP:FREQ:RD	0/1:329:2604:12.634409:2275
+chr10	89692913	.	GTAATGATATG	ATAATGATTTA	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.397_407delinsATAATGATTTA;HGVSg=chr10:g.89692913_89692923delinsATAATGATTTA;HGVSp=NP_000305.3:p.(Val133_Cys136delinsIleMetIleTyr);Identified=Canary;OLD_VARIANT=10:89692912:TGTAATGATATG/TATAATGATTTA;ampbias=0.12;amps=PTEN_5_2;gene=PTEN;lrg=LRG_311t1:c.397_407delinsATAATGATTTA;numAmps=1/2	GT:AD:DP:FREQ:RD	0/1:206:2604:7.910906:2398
+chr10	89692921	.	A	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.405A>T;HGVSg=chr10:g.89692921A>T;HGVSp=NP_000305.3:p.(=);Identified=Canary;ampbias=0.18;amps=PTEN_5_2;gene=PTEN;lrg=LRG_311t1:c.405A>T;numAmps=1/2	GT:AD:DP:FREQ:RD	0/1:326:2604:12.519201:2278
+chr10	89692923	.	G	A	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.407G>A;HGVSg=chr10:g.89692923G>A;HGVSp=NP_000305.3:p.(Cys136Tyr);Identified=Canary;ampbias=0.18;amps=PTEN_5_2;gene=PTEN;lrg=LRG_311t1:c.407G>A;numAmps=1/2	GT:AD:DP:FREQ:RD	0/1:327:2604:12.557604:2277
+chr10	89711833	.	AT	A	.	PASS	AC=1;ADP=1791;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.493-41del;HGVSg=chr10:g.89711834del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89711840:TT/T;WT=0;amps=PTEN_6_1;homopolymer=T;lrg=LRG_311t1:c.493-41del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:104:104:0:1791:5.81%:30:5.7465E-31:39:1683:1683:0:1796
+chr10	89711855	.	CT	C	.	PASS	AC=1;ADP=1790;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.493-19del;HGVSg=chr10:g.89711856del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89711862:TT/T;WT=0;amps=PTEN_6_1;homopolymer=T;lrg=LRG_311t1:c.493-19del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:102:102:0:1790:5.7%:29:2.3831E-30:39:1680:1680:0:1796
+chr10	89717623	.	G	A	.	PASS	AC=1;ADP=2850;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.648G>A;HGVSg=chr10:g.89717623G>A;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.06;amps=PTEN_7_2;gene=PTEN;lrg=LRG_311t1:c.648G>A;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:136:136:0:2850:4.77%:38:5.5216E-39:39:2707:2707:0:2877
+chr10	89720633	.	CTTT	C,CT,CTT,CTTTT	.	PASS	AC=1,0,0,0;AF=0.500,0.00,0.00,0.00;AN=2;HET=1;HOM=0;Identified=Primal;NC=0;WT=0;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.	GT:ABQ:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:97:0:1519:6.58%:28:6.2694E-29:39:1372:1372:0:1532
+chr10	89720749	.	C	T	.	PASS	AC=1;ADP=2942;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.900C>T;HGVSg=chr10:g.89720749C>T;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.22;amps=PTEN_8_2;gene=PTEN;lrg=LRG_311t1:c.900C>T;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:460:460:0:2942:15.64%:99:3.6428E-143:39:2482:2482:0:3035
+chr10	89720791	.	A	G	.	PASS	AC=1;ADP=1501;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.942A>G;HGVSg=chr10:g.89720791A>G;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;amps=PTEN_8_2;gene=PTEN;lrg=LRG_311t1:c.942A>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:468:468:0:1501:31.18%:99:5.365E-158:39:1033:1033:0:1503
+chr10	89720907	.	T	G	.	PASS	AC=1;ADP=1740;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.1026+32T>G;HGVSg=chr10:g.89720907T>G;HOM=0;Identified=Intersection;NC=0;WT=0;amps=PTEN_8_3;lrg=LRG_311t1:c.1026+32T>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:876:876:0:1740:50.34%:99:0E0:39:858:858:0:1750
+chr10	89725238	.	TT	T	.	PASS	AC=1;ADP=2891;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.*10del;HGVSg=chr10:g.89725239del;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89725238:TT/T;WT=0;ampbias=0.07;amps=PTEN_9_5;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*2del;muterr=(variantchecker):_Sequence_"T"_at_position_2245_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"T"_at_position_2253.;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:274:274:0:2891:9.52%:81:3.7222E-82:39:2599:2599:0:2905
+chr10	89725239	.	T	TT	.	PASS	AC=1;ADP=2890;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.*10dup;HGVSg=chr10:g.89725239dup;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89725239:T/TT;WT=0;ampbias=0.04;amps=PTEN_9_4;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*1_*2insT;muterr=(variantchecker):_Insertion_of_T_at_position_2244_2245_was_given,_however,_the_HGVS_notation_prescribes_that_it_should_be_a_duplication_of_T_at_position_2253_2253.;numAmps=1/2;status=RENAMED_from:chr10:g.89725230_89725231insT_to:chr10:g.89725239dup_offset:+9bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:177:177:0:2890:6.8%:51:9.8729E-52:39:2402:2402:0:2905
+chr10	89725267	.	T	C	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.*38T>C;HGVSg=chr10:g.89725267T>C;HGVSp=NP_000305.3:p.(=);Identified=Canary;amps=PTEN_9_5;gene=PTEN;lrg=LRG_311t1:c.*38T>C;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:337:1341:25.130499:1004
+chr10	89725267	.	TAAACTTGAATAAACTGAAAATGGACCTT	CAAACTTGAATAAACTGAAAAGGGACC	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.*38_*66delinsCAAACTTGAATAAACTGAAAAGGGACC;HGVSg=chr10:g.89725267_89725295delinsCAAACTTGAATAAACTGAAAAGGGACC;HGVSp=NP_000305.3:p.(=);Identified=Canary;OLD_VARIANT=10:89725266:ATAAACTTGAATAAACTGAAAATGGACCTT/ACAAACTTGAATAAACTGAAAAGGGACC;amps=PTEN_9_5;gene=PTEN;lrg=LRG_311t1:c.*38_*66delinsCAAACTTGAATAAACTGAAAAGGGACC;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:126:1341:9.395973:1215
+chr10	89725288	.	T	G	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.*59T>G;HGVSg=chr10:g.89725288T>G;HGVSp=NP_000305.3:p.(=);Identified=Canary;amps=PTEN_9_5;gene=PTEN;lrg=LRG_311t1:c.*59T>G;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:330:1341:24.608501:1011
+chr10	89725301	.	TTTT	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.*73_*75del;HGVSg=chr10:g.89725302_89725304del;HGVSp=NP_000305.3:p.(=);Identified=Canary;amps=PTEN_9_5;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*65_*67del;muterr=(variantchecker):_Sequence_"TTT"_at_position_2308_2310_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"TTT"_at_position_2316_2318.;numAmps=1/1;status=RENAMED_from:chr10:g.89725294_89725296del_to:chr10:g.89725302_89725304del_offset:+8bp	GT:AD:DP:FREQ:RD	0/1:49:1341:3.653990:1292
+chr10	89725302	.	TTT	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_000314.4:c.*74_*75del;HGVSg=chr10:g.89725303_89725304del;HGVSp=NP_000305.3:p.(=);Identified=Canary;amps=PTEN_9_5;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*65_*66del;muterr=(variantchecker):_Sequence_"TT"_at_position_2308_2309_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"TT"_at_position_2317_2318.;numAmps=1/1;status=RENAMED_from:chr10:g.89725294_89725295del_to:chr10:g.89725303_89725304del_offset:+9bp	GT:AD:DP:FREQ:RD	0/1:352:1341:26.249067:989
+chr10	89725303	.	TT	T	.	PASS	AC=1;ADP=976;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.*75del;HGVSg=chr10:g.89725304del;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89725303:TT/T;WT=0;amps=PTEN_9_5;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*65del;muterr=(variantchecker):_Sequence_"T"_at_position_2308_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"T"_at_position_2318.;numAmps=1/1;status=RENAMED_from:chr10:g.89725294del_to:chr10:g.89725304del_offset:+10bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:320:320:0:976:32.82%:99:7.076E-111:39:647:647:0:978
+chr10	89725304	.	T	TT	.	PASS	AC=1;ADP=967;AF=0.500;AN=2;HET=1;HGVSc=NM_000314.4:c.*75dup;HGVSg=chr10:g.89725304dup;HGVSp=NP_000305.3:p.(=);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=10:89725304:T/TT;WT=0;amps=PTEN_9_5;gene=PTEN;homopolymer=T;lrg=LRG_311t1:c.*64_*65insT;muterr=(variantchecker):_Insertion_of_T_at_position_2307_2308_was_given,_however,_the_HGVS_notation_prescribes_that_it_should_be_a_duplication_of_T_at_position_2318_2318.;numAmps=1/1;status=RENAMED_from:chr10:g.89725293_89725294insT_to:chr10:g.89725304dup_offset:+11bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:92:92:0:967:14.22%:29:5.2227E-30:39:527:527:0:978
+chr13	32890572	.	G	A	.	PASS	AC=1;ADP=1201;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.-26G>A;HGVSg=chr13:g.32890572G>A;HGVSp=NP_000050.2:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_1;gene=BRCA2;lrg=LRG_293t1:c.-26G>A;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:612:612:0:1201:51%:99:1.0032E-228:39:587:587:0:1205
+chr13	32890650	.	G	C	.	PASS	AC=1;ADP=2408;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.53G>C;HGVSg=chr13:g.32890650G>C;HGVSp=NP_000050.2:p.(Arg18Pro);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.12;amps=BRCA2MCPV2_1;gene=BRCA2;lrg=LRG_293t1:c.53G>C;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:197:197:0:2408:8.18%:57:4.0549E-58:39:2203:2203:0:2421
+chr13	32893197	.	AT	A,ATT	.	PASS	AC=1,0;AF=0.500,0.00;AN=2;HET=1;HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_3;homopolymer=T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:37:254:0:1239:20.8%:80:1.927E-81:37:964:964:0:1242
+chr13	32907427	.	AA	A	.	PASS	AC=1;ADP=1448;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.1813del;HGVSg=chr13:g.32907428del;HGVSp=NP_000050.2:p.(Ile605Tyrfs*9);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=13:32907427:AA/A;WT=0;amps=BRCA2MCPV2_23;gene=BRCA2;homopolymer=A;lrg=LRG_293t1:c.1806del;muterr=(variantchecker):_Sequence_"A"_at_position_2033_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"A"_at_position_2040.;numAmps=1/1;status=RENAMED_from:chr13:g.32907421del_to:chr13:g.32907428del_offset:+7bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:121:121:0:1448:8.38%:35:1.7298E-36:39:1317:1317:0:1455
+chr13	32907535	.	CTT	C,CT,CTTT	.	PASS	AC=1,0,0;AF=0.500,0.00,0.00;AN=2;HET=1;HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_24r_1;homopolymer=T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:133:0:1554:8.65%:39:3.2326E-40:39:1398:1398:0:1561
+chr13	32911888	.	A	G	.	PASS	AC=1;ADP=2778;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.3396A>G;HGVSg=chr13:g.32911888A>G;HGVSp=NP_000050.2:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.01;amps=BRCA2MCPV2_39,BRCA2MCPV2_40;gene=BRCA2;lrg=LRG_293t1:c.3396A>G;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:1476:1476:0:2778:53.17%:99:0E0:39:1297:1297:0:2783
+chr13	32912351	.	AA	A	.	PASS	AC=1;ADP=2697;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.3860del;HGVSg=chr13:g.32912352del;HGVSp=NP_000050.2:p.(Asn1287Ilefs*6);HOM=0;Identified=Primal;NC=0;OLD_VARIANT=13:32912351:AA/A;WT=0;gene=BRCA2;lrg=LRG_293t1:c.3854del;muterr=(variantchecker):_Sequence_"A"_at_position_4081_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"A"_at_position_4087.;status=RENAMED_from:chr13:g.32912346del_to:chr13:g.32912352del_offset:+6bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:99:99:0:2697:3.67%:27:8.4206E-28:39:2595:2595:0:2712
+chr13	32913055	.	A	G	.	PASS	AC=2;ADP=3053;AF=1.00;AN=2;HET=0;HGVSc=NM_000059.3:c.4563A>G;HGVSg=chr13:g.32913055A>G;HGVSp=NP_000050.2:p.(=);HOM=1;Identified=Intersection;NC=0;WT=0;ampbias=0.00;amps=BRCA2MCPV2_51,BRCA2MCPV2_50;gene=BRCA2;lrg=LRG_293t1:c.4563A>G;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:39:3051:3051:0:3053:99.93%:99:0E0:40:1:1:0:3061
+chr13	32915005	.	G	C	.	PASS	AC=2;ADP=3508;AF=1.00;AN=2;HET=0;HGVSc=NM_000059.3:c.6513G>C;HGVSg=chr13:g.32915005G>C;HGVSp=NP_000050.2:p.(=);HOM=1;Identified=Intersection;NC=0;WT=0;ampbias=0.00;amps=BRCA2MCPV2_71,BRCA2MCPV2_70r_1;gene=BRCA2;lrg=LRG_293t1:c.6513G>C;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:39:3506:3506:0:3508:99.94%:99:0E0:40:1:1:0:3525
+chr13	32915410	.	CAATT	C	.	PASS	AC=1;ADP=1537;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.6841+78_6841+81del;HGVSg=chr13:g.32915411_32915414del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=13:32915412:ATTAA/A;WT=0;amps=BRCA2MCPV2_74;lrg=LRG_293t1:c.6841+78_6841+81del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:715:715:0:1537:46.52%:99:5.0608E-261:38:822:822:0:1545
+chr13	32929232	.	A	G	.	PASS	AC=1;ADP=1561;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.7242A>G;HGVSg=chr13:g.32929232A>G;HGVSp=NP_000050.2:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_81;gene=BRCA2;lrg=LRG_293t1:c.7242A>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:848:848:0:1561:54.32%:99:2E-323:39:713:713:0:1568
+chr13	32929387	.	T	C	.	PASS	AC=2;ADP=1194;AF=1.00;AN=2;HET=0;HGVSc=NM_000059.3:c.7397T>C;HGVSg=chr13:g.32929387T>C;HOM=1;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_83;lrg=LRG_293t1:c.7397T>C;muterr=(variantchecker):_T_not_found_at_position_7624,_found_C_instead.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:39:1188:1188:0:1194:99.5%:99:0E0:36:5:5:0:1199
+chr13	32936646	.	T	C	.	PASS	AC=2;ADP=1408;AF=1.00;AN=2;HET=0;HGVSc=NM_000059.3:c.7806-14T>C;HGVSg=chr13:g.32936646T>C;HOM=1;Identified=Intersection;NC=0;WT=0;amps=BRCA2MCPV2_89;lrg=LRG_293t1:c.7806-14T>C;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:39:1406:1406:0:1408:99.86%:99:0E0:38:2:2:0:1421
+chr13	32954029	.	AA	A	.	PASS	AC=1;ADP=1455;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.9097del;HGVSg=chr13:g.32954030del;HGVSp=NP_000050.2:p.(Thr3033Leufs*29);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=13:32954029:AA/A;WT=0;amps=BRCA2MCPV2_106;gene=BRCA2;homopolymer=A;lrg=LRG_293t1:c.9090del;muterr=(variantchecker):_Sequence_"A"_at_position_9317_was_given,_however,_the_HGVS_notation_prescribes_that_on_the_forward_strand_it_should_be_"A"_at_position_9324.;numAmps=1/1;status=RENAMED_from:chr13:g.32954023del_to:chr13:g.32954030del_offset:+7bp	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:93:93:0:1455:6.4%:26:1.0764E-27:39:1355:1355:0:1460
+chr13	32954302	.	AT	A	.	PASS	AC=1;ADP=1422;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.9256+21del;HGVSg=chr13:g.32954303del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=13:32954309:TT/T;WT=0;amps=BRCA2MCPV2_108;homopolymer=T;lrg=LRG_293t1:c.9256+21del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:63:63:0:1422:4.43%:17:1.7737E-18:39:1347:1347:0:1428
+chr13	32968808	.	CT	C	.	PASS	AC=1;ADP=1288;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.9257-17del;HGVSg=chr13:g.32968809del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=13:32968815:TT/T;WT=0;amps=BRCA2MCPV2_109;homopolymer=T;lrg=LRG_293t1:c.9257-17del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:63:63:0:1288:4.9%:17:1.6493E-18:39:1215:1215:0:1289
+chr13	32972841	.	C	T	.	PASS	AC=1;ADP=2742;AF=0.500;AN=2;HET=1;HGVSc=NM_000059.3:c.10191C>T;HGVSg=chr13:g.32972841C>T;HGVSp=NP_000050.2:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.12;amps=BRCA2MCPV2_121;gene=BRCA2;lrg=LRG_293t1:c.10191C>T;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:219:219:0:2742:7.99%:64:8.4089E-65:39:2519:2519:0:2762
+chr17	7578115	.	T	C	.	PASS	AC=2;ADP=2140;AF=1.00;AN=2;HET=0;HGVSc=NM_000546.5:c.672+62A>G;HGVSg=chr17:g.7578115T>C;HOM=1;Identified=Intersection;NC=0;WT=0;amps=TP53MCPV2_12;lrg=LRG_321t1:c.672+62A>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:38:2138:2138:0:2140:99.91%:99:0E0:39:1:1:0:2187
+chr17	7579472	.	G	C	.	PASS	AC=1;ADP=1083;AF=0.500;AN=2;HET=1;HGVSc=NM_000546.5:c.215C>G;HGVSg=chr17:g.7579472G>C;HGVSp=NP_000537.3:p.(Pro72Arg);HOM=0;Identified=Intersection;NC=0;WT=0;amps=TP53MCPV2_17;gene=TP53;lrg=LRG_321t1:c.215C>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:826:826:0:1083:76.27%:99:0E0:39:254:254:0:1089
+chr17	7579526	.	A	T	.	PASS	AC=1;ADP=3297;AF=0.500;AN=2;HET=1;HGVSc=NM_000546.5:c.161T>A;HGVSg=chr17:g.7579526A>T;HGVSp=NP_000537.3:p.(Phe54Tyr);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.09;amps=TP53MCPV2_18;gene=TP53;lrg=LRG_321t1:c.161T>A;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:36:290:290:0:3297:8.8%:84:3.7639E-85:38:2990:2990:0:3389
+chr17	7579619	.	G	T	.	PASS	AC=1;ADP=3514;AF=0.500;AN=2;HET=1;HGVSc=NM_000546.5:c.97-29C>A;HGVSg=chr17:g.7579619G>T;HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.04;amps=TP53MCPV2_19,TP53MCPV2_18;lrg=LRG_321t1:c.97-29C>A;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:1779:1779:0:3514:50.63%:99:0E0:39:1729:1729:0:3567
+chr17	7579643	.	CCCCCAGCCCTCCAGGT	C	.	PASS	AC=2;ADP=3418;AF=1.00;AN=2;HET=0;HGVSc=NM_000546.5:c.96+41_97-54del;HGVSg=chr17:g.7579644_7579659del;HOM=1;Identified=Intersection;NC=0;OLD_VARIANT=17:7579668:CTCCAGGTCCCCAGCCC/C;WT=0;ampbias=0.61;amps=TP53MCPV2_19;lrg=LRG_321t1:c.96+41_97-54del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	1/1:37:3339:3339:0:3418:97.4%:99:0E0:39:82:82:0:3527
+chr17	7579801	.	G	C	.	PASS	AC=1;ADP=1122;AF=0.500;AN=2;HET=1;HGVSc=NM_000546.5:c.74+38C>G;HGVSg=chr17:g.7579801G>C;HOM=0;Identified=Intersection;NC=0;WT=0;amps=TP53MCPV2_20;lrg=LRG_321t1:c.74+38C>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:589:589:0:1122:52.5%:99:5.5246E-222:39:531:531:0:1145
+chr17	7580052	.	C	T	.	PASS	AC=1;ADP=1230;AF=0.500;AN=2;HET=1;HGVSc=NM_000546.5:c.-28-112G>A;HGVSg=chr17:g.7580052C>T;HOM=0;Identified=Intersection;NC=0;WT=0;amps=TP53MCPV2_21;lrg=LRG_321t1:c.-28-112G>A;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:621:621:0:1230:50.49%:99:1.8763E-231:37:608:608:0:1273
+chr17	41223094	.	T	C	.	PASS	AC=1;ADP=998;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.4837A>G;HGVSg=chr17:g.41223094T>C;HGVSp=NP_009225.1:p.(Ser1613Gly);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_12;gene=BRCA1;lrg=LRG_292t1:c.4837A>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:515:515:0:998:51.6%:99:2.2397E-195:38:483:483:0:1050
+chr17	41231323	.	C	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2692G>A;HGVSg=chr17:g.41231323C>T;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2692G>A;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:236:2391:9.870347:2155
+chr17	41231333	.	G	C	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2702C>G;HGVSg=chr17:g.41231333G>C;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2702C>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:222:2391:9.284818:2169
+chr17	41231352	.	T	C	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2721A>G;HGVSg=chr17:g.41231352T>C;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2721A>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:281:2391:11.752405:2110
+chr17	41231370	.	C	A	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2739G>T;HGVSg=chr17:g.41231370C>A;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2739G>T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:221:2391:9.242994:2170
+chr17	41231401	.	C	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2770G>A;HGVSg=chr17:g.41231401C>T;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2770G>A;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:216:2391:9.033877:2175
+chr17	41231404	.	T	C	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2773A>G;HGVSg=chr17:g.41231404T>C;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2773A>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:290:2391:12.128817:2101
+chr17	41231419	.	G	A	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2788C>T;HGVSg=chr17:g.41231419G>A;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2788C>T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:291:2391:12.170640:2100
+chr17	41231432	.	A	T	.	PASS	AC=1;AF=0.500;AN=2;HGVSc=NM_007294.3:c.4358-2801T>A;HGVSg=chr17:g.41231432A>T;Identified=Canary;amps=BRCA1MCPV2_18;lrg=LRG_292t1:c.4358-2801T>A;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:AD:DP:FREQ:RD	0/1:278:2391:11.626934:2113
+chr17	41234470	.	A	G	.	PASS	AC=1;ADP=1402;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.4308T>C;HGVSg=chr17:g.41234470A>G;HGVSp=NP_009225.1:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_19;gene=BRCA1;lrg=LRG_292t1:c.4308T>C;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:728:728:0:1402:51.93%:99:1.0108E-273:39:674:674:0:1414
+chr17	41242938	.	GCA	G	.	PASS	AC=1;ADP=1683;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.4185+21_4185+22del;HGVSg=chr17:g.41242939_41242940del;HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=17:41242949:CAC/C;WT=0;amps=BRCA1MCPV2_21;lrg=LRG_292t1:c.4185+21_4185+22del;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:36:172:172:0:1683:10.29%:51:1.4736E-52:37:1498:1498:0:1698
+chr17	41244000	.	T	C	.	PASS	AC=1;ADP=1198;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.3548A>G;HGVSg=chr17:g.41244000T>C;HGVSp=NP_009225.1:p.(Lys1183Arg);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_27;gene=BRCA1;lrg=LRG_292t1:c.3548A>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:619:619:0:1198:51.67%:99:3.1842E-232:39:578:578:0:1201
+chr17	41244435	.	T	C	.	PASS	AC=1;ADP=1335;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.3113A>G;HGVSg=chr17:g.41244435T>C;HGVSp=NP_009225.1:p.(Glu1038Gly);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_31;gene=BRCA1;lrg=LRG_292t1:c.3113A>G;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:765:765:0:1335:57.3%:99:8.4181E-297:39:570:570:0:1342
+chr17	41244936	.	G	A	.	PASS	AC=1;ADP=1803;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.2612C>T;HGVSg=chr17:g.41244936G>A;HGVSp=NP_009225.1:p.(Pro871Leu);HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_36;gene=BRCA1;lrg=LRG_292t1:c.2612C>T;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:883:883:0:1803:48.97%:99:0E0:39:920:920:0:1815
+chr17	41245230	.	G	T	.	PASS	AC=1;ADP=3126;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.2318C>A;HGVSg=chr17:g.41245230G>T;HGVSp=NP_009225.1:p.(Pro773His);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.06;amps=BRCA1MCPV2_40;gene=BRCA1;lrg=LRG_292t1:c.2318C>A;numAmps=1/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:116:116:0:3126:3.71%:30:1.5059E-31:39:3010:3010:0:3164
+chr17	41245237	.	A	G	.	PASS	AC=1;ADP=3122;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.2311T>C;HGVSg=chr17:g.41245237A>G;HGVSp=NP_009225.1:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.03;amps=BRCA1MCPV2_39,BRCA1MCPV2_40;gene=BRCA1;lrg=LRG_292t1:c.2311T>C;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:39:1639:1639:0:3122:52.5%:99:0E0:39:1482:1482:0:3165
+chr17	41245466	.	G	A	.	PASS	AC=1;ADP=2219;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.2082C>T;HGVSg=chr17:g.41245466G>A;HGVSp=NP_009225.1:p.(=);HOM=0;Identified=Intersection;NC=0;WT=0;ampbias=0.01;amps=BRCA1MCPV2_42,BRCA1MCPV2_41;gene=BRCA1;lrg=LRG_292t1:c.2082C>T;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:1092:1092:0:2219:49.21%:99:0E0:37:1126:1126:0:2255
+chr17	41245586	.	CT	C	.	PASS	AC=1;ADP=2757;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.1961del;HGVSg=chr17:g.41245587del;HGVSp=NP_009225.1:p.(Lys654Serfs*47);HOM=0;Identified=Intersection;NC=0;OLD_VARIANT=17:41245593:TT/T;WT=0;ampbias=0.00;amps=BRCA1MCPV2_43,BRCA1MCPV2_42;gene=BRCA1;homopolymer=T;lrg=LRG_292t1:c.1961del;numAmps=2/2	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:184:184:0:2757:6.78%:53:7.5072E-54:39:2514:2514:0:2804
+chr17	41247987	.	T	A	.	PASS	AC=1;ADP=1273;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.594-48A>T;HGVSg=chr17:g.41247987T>A;HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_55;lrg=LRG_292t1:c.594-48A>T;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:58:58:0:1273:4.56%:16:5.4686E-17:38:1212:1212:0:1294
+chr17	41256989	.	T	C	.	PASS	AC=1;ADP=1141;AF=0.500;AN=2;HET=1;HGVSc=NM_007294.3:c.213-16A>G;HGVSg=chr17:g.41256989T>C;HOM=0;Identified=Intersection;NC=0;WT=0;amps=BRCA1MCPV2_61;lrg=LRG_292t1:c.213-16A>G;muterr=(variantchecker):_Intronic_position_given_for_a_non-genomic_reference_sequence.;numAmps=1/1	GT:ABQ:AD:ADF:ADR:DP:FREQ:GQ:PVAL:RBQ:RD:RDF:RDR:SDP	0/1:38:621:621:0:1141:54.43%:99:1.0023E-236:38:518:518:0:1146

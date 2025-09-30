@@ -1,0 +1,47 @@
+This directory contains the code for the continuous integration of the Stafford
+Fox rare cancer program.
+
+# Design
+
+The CI is split into a client/server architecture with the jobs being managed
+via a central database implemented in SQLite. The server exposes a basic API
+allowing clients to register new jobs to run, retrieve a job to build, change a
+job's priority, etc. There are then two main clients that connect to this server
+and effectuate change: the _evaluator_ and the _builder_. As the design is
+distributed in nature, there is an assumption of a cache where results and
+derivations can be shared.
+
+The evaluator takes a set of paths for files containing Nix expressions to
+register. It evaluates the derivation, copies the closure to the cache so that
+it's available to any other stores, and then registers the derivation to be
+built.
+
+Builders query the server for a piece of work, where the server will uniquely
+allocate a job. The job is then built by copying the derivation closure from the
+cache, realising it, and then registering either a success or a failure with the
+server. In the event of a success, the outputs are copied to the cache prior to
+registering the success.
+
+# Server specifics
+
+The server is simple and takes care of all interactions with the database, and
+also ensures authentication is satisfied when a client requests an action.
+Authentication is done through public key cryptography where requests are
+expected to be signed by a known key. NB: there is no nonce as replay attacks
+are not considered part of the threat model.
+
+In addition to simple database interactions, the server also initiates hooks
+upon build failures and successes. Currently there are three hooks:
+
+  - RedCap upload on success of report endpoints
+  - Onedrive upload on success of report endpoints
+  - Failure reporting on the matrix Stafford CI room
+
+The server also ensures that only job names form a candidate key when
+projecting waiting jobs: jobs are updated upon collision.
+
+# Evaluator specifics
+
+Each path passed to the evaluator is expected to resolve to one derivation. The
+file name (without the .nix suffix) is used as a job name when registering the
+job.

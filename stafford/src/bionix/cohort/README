@@ -1,0 +1,55 @@
+This directory contains expressions for different cohort wide analysis. Most of
+the outputs are summarised plots, however there is also the cohort-wide small
+variant database for both WES and WGS.
+
+# Working on cohort subset (e.g., 100 genomes)
+
+The below can be restricted to certain subsets of the cohort by setting the
+argument string `subset`. Valid values are currently `hgsoc` and `100` for the
+100+ genomes subset.
+
+# Cohort wide small variant database
+
+The expression is in ./vardb.nix and can be built for WES with
+
+  nix build -f vardb.nix
+
+or for WGS with
+
+  nix build -f vardb.nix --argstr what WGS
+
+Frequently, additional reference databases are needed for annotations, such as
+canonical transcript ids and gene names. There are several in ../refdbs.nix that
+can be built, for example the canonical transcript and gene name map is obtained
+with
+
+  nix build --expr 'with import ../milton-slurm.nix {}; with bionix; refdbs.canoc' --impure
+
+dbNSFP [1] offers many useful annotations and can be obtained with
+
+  nix build --expr 'with import ../milton-slurm.nix {}; with bionix; refdbs.dbnsfp' --impure
+
+A database of overrepresented variants (by donor frequency) can be built
+using `./overrep.nix` similarly to vardb.nix. This expression has an
+additional argument `threshold` to specify the cutoff donor frequency.
+Other options are the same as `vardb.nix`, hence this can be constructed
+on any of the databases `vardb.nix` can produce.
+
+# Cohort wide summary tables and figures
+
+These are located in default.nix, see the comments in the file for the type of
+analysis available. To build one of the outputs, for example CNV signatures,
+use:
+
+  nix build -f . cnvsignatures
+
+# RNA Box/violin plots
+
+These can be generated over all samples with RNA using `all-boxplot.nix`. The
+`genes` attribute is used to select specific genes to render, and `tx2gene`
+controls whether to map transcripts to genes (the default). `samples` allows
+specific donors to be highlighted. Example invocation:
+
+  nix build -f all-boxplot.nix --arg genes '["BRCA1"]' --arg violin true --arg tx2gene false
+
+1: https://sites.google.com/site/jpopgen/dbNSFP

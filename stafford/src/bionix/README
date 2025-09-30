@@ -1,0 +1,5 @@
+This directory contains all the expressions describing the individual sample
+pipeline, as well as expressions for each sample in the cohort. The pipeline has
+two main files – `multisample.nix` and `multisample-report.nix` – that
+respectively contain the main pipeline and post processing for the report
+generation. The `cohort/` directory contains cohort analysis.

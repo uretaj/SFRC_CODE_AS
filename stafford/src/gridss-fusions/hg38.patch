@@ -1,0 +1,70 @@
+diff --git a/example/somatic-fusion-gene-candidates.R b/example/somatic-fusion-gene-candidates.R
+index b2ef87f5..8a5d4994 100644
+--- a/example/somatic-fusion-gene-candidates.R
++++ b/example/somatic-fusion-gene-candidates.R
+@@ -1,6 +1,6 @@
+ #
+ # Very basic example R script that demonstrates
+-# how GRIDSS output can be combined with the 
++# how GRIDSS output can be combined with the
+ # StructuralVariantAnnotation package and BioConductor
+ # to perform useful analyses.
+ #
+@@ -11,7 +11,6 @@
+ # one or more exons from each gene.
+ #
+ # CRAN packages
+-library(devtools)
+ library(stringr)
+ library(dplyr)
+ library(ggplot2)
+@@ -20,18 +19,19 @@ library(VariantAnnotation)
+ library(GenomicRanges)
+ library(GenomicFeatures)
+ library(rtracklayer)
+-library(TxDb.Hsapiens.UCSC.hg19.knownGene)
++library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+ library(org.Hs.eg.db)
+ library(StructuralVariantAnnotation) # install_github("d-cameron/StructuralVariantAnnotation")
+ 
+-vcf <- readVcf("normal-tumour.sv.vcf", "hg19")
++while(T){
++vcf <- readVcf("normal-tumour.sv.vcf", "hg38")
+ 
+ # Remove low confidence variants
+ vcf <- vcf[rowRanges(vcf)$QUAL >= 500,]
+ 
+ # very simple somatic filter: normal support less than 5% that of the tumour
+ # this assumes that the first INPUT was the normal
+-vcf <- vcf[geno(vcf)$QUAL[,1] < 0.05 * rowRanges(vcf)$QUAL,]
++#vcf <- vcf[geno(vcf)$QUAL[,1] < 0.05 * rowRanges(vcf)$QUAL,]
+ 
+ # convert to breakend GRanges
+ gr <- breakpointRanges(vcf)
+@@ -48,8 +48,12 @@ seqlevels(gr) <- paste0("chr", c(1:22, "X", "Y"))
+ gr <- gr[gr$partner %in% names(gr)]
+ 
+ # annotate breakends with gene names and gene orientation
+-gns <- genes(TxDb.Hsapiens.UCSC.hg19.knownGene)
++gns <- genes(TxDb.Hsapiens.UCSC.hg38.knownGene)
+ hits <- as.data.frame(findOverlaps(gr, gns, ignore.strand=TRUE))
++if(nrow(hits)==0){
++  n <- 0
++  break
++}
+ hits$SYMBOL <- biomaRt::select(org.Hs.eg.db, gns[hits$subjectHits]$gene_id, "SYMBOL")$SYMBOL
+ hits$gene_strand <- as.character(strand(gns[hits$subjectHits]))
+ hits <- hits %>%
+@@ -71,6 +75,9 @@ gr <- gr[(gr$couldBeThreePrimeStart & partner(gr)$couldBeFivePrimeEnd) |
+ 		(gr$couldBeFivePrimeEnd & partner(gr)$couldBeThreePrimeStart),]
+ 
+ # return highest scoring variants first
+-gr <- gr[order(-gr$QUAL)]
+-
+-
++gr <- gr[order(-gr$QUAL)]$SYMBOL
++n <- length(gr)
++break
++}
++fusions <- if(n<2) data.frame(gene1=c(), gene2=c()) else data.frame(gene1=gr[seq(1,n,2)],gene2=gr[seq(2,n,2)])
++write.table(fusions, file="out.tsv", sep="\t", row.names=F, col.names=F)

@@ -1,0 +1,38 @@
+diff --git a/src/nix/bionix/tools/bwa-index2.nix b/src/nix/bionix/tools/bwa-index2.nix
+index f5cc69b95f7..51ea3a32f3a 100644
+--- a/src/nix/bionix/tools/bwa-index2.nix
++++ b/src/nix/bionix/tools/bwa-index2.nix
+@@ -1,5 +1,6 @@
+ { bionix
+ , flags ? null
++, altRegex ? "^>[^ \t]*_alt$"
+ }:
+ 
+ ref:
+@@ -18,6 +19,7 @@ stage {
+     bwa-mem2 index ${optionalString (flags != null) flags} ref.fa
+     mkdir $out
+     mv ref.fa.* $out
+-    grep '^>[^ \t]*_alt$' ref.fa | tr -d '^>' > $out/idxbase.alt || true
++    grep -P '${altRegex}' ref.fa | tr -d '^>' > $out/idxbase.alt || true
+   '';
++  stripStorePaths = false;
+ }
+diff --git a/src/nix/bionix/tools/bwa-mem2-app.nix b/src/nix/bionix/tools/bwa-mem2-app.nix
+index 8cca5a54f6e..0d73d3677e4 100644
+--- a/src/nix/bionix/tools/bwa-mem2-app.nix
++++ b/src/nix/bionix/tools/bwa-mem2-app.nix
+@@ -3,10 +3,11 @@
+     {
+       name = "bwa-mem2";
+       src = fetchFromGitHub {
++        fetchSubmodules = true;
+         owner = "bwa-mem2";
+         repo = "bwa-mem2";
+-        rev = "f882015f7f46845f72c10094a621264f78d206d8";
+-        sha256 = "1wfx8j9mwbb29jw4zxp28lajmj774jy1l5x229nf065cqr2dgyqg";
++        rev = "v2.0";
++        sha256 = "0q5wqal0nfxd3yfbmxahyaiqqmsrrplnwhplcjvz1xzw7bxwwnnj";
+         };
+       installPhase = ''
+         mkdir -p $out/bin

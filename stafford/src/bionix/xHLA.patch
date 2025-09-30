@@ -1,0 +1,57 @@
+From: Justin Bedo <cu@cua0.org>
+Subject: [PATCH] t/maxcpu
+
+Patch to use a maximum number of CPUS determined by Nix build env.
+
+---
+ bin/align.pl | 3 ++-
+ bin/typing.r | 5 +++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/bin/align.pl b/bin/align.pl
+index 4cbc997..7caaae4 100755
+--- a/bin/align.pl
++++ b/bin/align.pl
+@@ -60,7 +60,8 @@ while(<IN>)
+ print STDERR "\tfound ", scalar(keys %tseq), " HLA exons\n";
+ 
+ print STDERR "processing FASTQ file\n";
+-open(IN, "diamond blastx -t . -C 20000 --index-mode 1 --seg no --min-score 10 --top 20 -c 1 -d $root/data/hla -q $fastq_file -f tab --quiet -o /dev/stdout |") or die $!;
++my $threads = $ENV{'NIX_BUILD_CORES'};
++open(IN, "diamond blastx -t . --threads $threads --index-mode 1 --seg no --min-score 10 --top 20 -c 1 -d $root/data/hla -q $fastq_file -f tab --quiet -o /dev/stdout |") or die $!;
+ my %mLEN;
+ my %mlen;
+ my %match;
+diff --git a/bin/typing.r b/bin/typing.r
+index 52a2dcf..987151d 100755
+--- a/bin/typing.r
++++ b/bin/typing.r
+@@ -1,6 +1,7 @@
+ #!/usr/bin/env Rscript
+ # Author: Xie Chao
+ 
++cores <- Sys.getenv("NIX_BUILD_CORES")
+ args <- commandArgs()
+ code.source <- sub('--file=', '', args[4])
+ if(length(args) != 7) {
+@@ -281,7 +282,7 @@ get.diff <- function(sol, comp, superset){
+ 
+ get.comp.info <- function(sols, comps, superset){
+ 	data.table(do.call(rbind, 
+-		mclapply(1:length(sols), function(x) get.diff(sols[x], comps[x], superset))
++		mclapply(1:length(sols), function(x) get.diff(sols[x], comps[x], superset), mc.cores = cores)
+ 	))
+ }
+ 
+@@ -347,7 +348,7 @@ more <- do.call(rbind, mclapply(solution, function(s){
+ 	cand[, rank := 1:nrow(cand)]
+ 	cand[, solution := sol]
+ 	return(copy(cand))
+-}))
++}, mc.cores = cores))
+ 
+ all.candidates <- unique(c(more$solution, more$competitor))
+ all <- all[type %in% all.candidates]
+
+-- 
+tg: (34221ea..) t/maxcpu (depends on: master)

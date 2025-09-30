@@ -1,0 +1,186 @@
+This is the respository for the Stafford Fox project containing data,
+analysis, and pipeline specifications. The pipeline is built on BioNix
+[1] and Nix [2]. Primary data is stored in this repository via git-annex
+[3].
+
+# Getting help
+
+- For this specific pipeline: https://matrix.to/#/#stafford-bionix:vk3.wtf
+- For help with BioNix: https://matrix.to/#/#bionix:nixos.org
+- For help with Nix: https://matrix.to/#/#nix:nixos.org
+- For help with Nix at WEHI: https://matrix.to/#/#nix-at-wehi:vk3.wtf
+
+Other helpful external resources:
+
+- NixOS wiki: https://nixos.wiki/
+- Tazjin's 1-pager on Nix the language: https://github.com/tazjin/nix-1p
+
+# Directory layout
+
+- src/
+
+Contains all pipeline code for computing results in the project.
+
+- src/bionix/
+
+Expressions for each sample that's part of the cohort, each as a
+separate file.
+
+- src/bionix/cohort/
+
+Expressions that produce analysis over the entire cohort, e.g., PCA plots
+for RNA data etc.
+
+- src/nix/
+
+Other nix projects that are used in this one (e.g., BioNix, nixpkgs, etc).
+
+- lib/
+
+Contains all primary data.
+
+# Working with Nix on Milton
+
+As Nix is not installed on Milton and is not supported by ITS, the user
+has to manage their own Nix store and use namespaces to map it to the
+expected location. There is a module (nix/latest) that provides a nix
+binary that uses the store path:
+
+  /projects/vast/nix/$USER/nix
+
+Nix use on milton is documented at
+
+  https://wehieduau.sharepoint.com/sites/rc2/SitePages/Nix.aspx
+
+Post-build, if you want to browse around a results folder you will
+need to bind mount the above directory to /nix. This is done for you
+in the rc-tools module with:
+
+  nix-chroot bash
+
+Alternatively, the symlinks can all be dereferenced by making a copy:
+
+  nix-chroot cp -rL ./result /somewhere/else
+
+It's also important to garbage collect your store from time to time as
+the intermediate files in a bioinformatics pipeline are large:
+
+  nix store gc
+
+# Getting results for a sample
+
+WARNING: you probably want to use the build cache (see below)
+
+Run:
+  nix build -f src/bionix/sfrc01234.nix
+
+Results (for sample sfrc01234) will be available in ./result
+
+# Building subsets of results for a sample
+
+The standard result set links together many independent small analysis and build
+times can be potentially reduced if only a subset of these are required. The set
+of attributes available can be queried:
+
+  nix eval --impure --expr 'with import ./src/bionix/sfrc01234.nix {}; builtins.attrNames linkInputs'
+
+and any desired attribute build specifically, e.g., for octopus variants:
+
+  nix build --impure --expr 'with import ./src/bionix/sfrc01234.nix {}; only "octopus.vcf"'
+
+# Small variant database
+
+The small variant database is useful to access for debugging samples. There's
+an expression in src/bionix/getdb.nix that helps extract the small variant
+DB for a single sample, e.g.,:
+
+  nix build -f getdb.nix --arg sample ./src/bionix/sfrc01234.nix
+
+# Using the build cache
+
+As these builds take a long time, you may wish to use the build cache
+that contains the results automatically built by the CI system. To do
+this, add the following to your Nix config (either /etc/nix/nix.conf for
+system wide Nix installs, or ~/.config/nix/nix.conf otherwise):
+
+  trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= milton:I31WtEP79IboXjFjNZGrP85sFIkUml4RfSjUbWQEUvU=
+  substituters = https://cache.nixos.org http://nix.wehi.edu.au:5001
+
+# Extracting evidence BAMs from octopus
+
+Here's an example for sfrc01234:
+
+  nix build -f ./src/bionix/evidence.nix --arg sample 'import ./src/bionix/sfrc01234.nix {}'
+
+Or, for a single chromosome;
+
+  nix build --impure --expr 'with import ./src/bionix/evidence.nix { sample = import ./src/bionix/sfrc01234.nix {}; }; linkInputs.chr21'
+
+In cases where a call was _not_ made the evidence BAM will be as by default only
+evidence for calls are provided. To force all (realigned) reads to be output to
+evidence use
+
+  nix build --impure --expr 'with import ./src/bionix/evidence.nix { sample = import ./src/bionix/sfrc01234.nix {fullEvidence = true;};}; linkInputs.chr21'
+
+# Accessing raw alignments
+
+Similarly to extracting evidence, the raw alignments can be uncompressed and
+index for exploration:
+
+  nix build -f alignments.nix --arg sample 'import ./src/bionix/sfrc01234.nix {}'
+
+Frequently it is desirable to filter to some regions to reduce the file size.
+This can be done with the regions parameter, e.g.,:
+
+  nix build -f alignments.nix --arg sample 'import ./src/bionix/sfrc01234.nix {}' --arg regions '["chr17:31235773"]'
+
+# Interactively visualising potential ecDNA
+
+Here's an example for sfrc01234:
+
+  nix-shell src/ecDNAPlots/shiny.nix -I src/nix --arg sample ./src/bionix/sfrc01234.nix
+
+This will start up a Shiny app session and print its address e.g. "Listening on
+http://127.0.0.1:XXXX". You then use local port forwarding to access that server
+from your laptop. On your laptop run:
+
+  ssh -L 8080:127.0.0.1:XXXX vc7-shared
+
+Then navigate to http://localhost:8080/ in your web browser and you should be
+able to access the visualisation.
+
+# Running amplicon architect
+
+Amplicon architect can be run on any sample using the expression found in `src/bionix/aa.nix`.
+As AA relies on Mosek, a license must be provided. Here's an example of how to run AA on `SFRC01022`:
+
+   nix-build src/bionix/aa.nix --arg sample ./src/bionix/sfrc01022.nix --arg license /path/to/mosek.lic
+
+# Inferring phylogentic trees
+
+There is an expression at src/bionix/phylo.nix for inferring
+phylogenetic trees for samples with multiple tumours:
+
+  nix build -f src/bionix/phylo.nix --arg sample ./src/bionix/sfrc01056.nix
+
+A tree can be drawn with the output of this, e.g.,:
+
+  nix run git+https://vk3.wtf/cgit/phylogenies.git#draw ./result/{props,tree} out.dot
+
+# Hatchet
+
+Hatchet can be run with a gurobi license (recommended):
+
+  nix build -f src/bionix/sfrc01028.nix --arg enableHatchet true --arg hatchetConfig '{gurobiLicense = /path/to/license;}' linkInputs.hatchet
+
+If a gurobi license is not specified then CBC will be used.
+
+# Cohort wide analysis
+
+Cohort wide analysis are located in src/bionix/cohort. See
+src/bionix/cohort/README for a description of the analysis available.
+
+--
+1: https://github.com/PapenfussLab/bionix
+2: https://nixos.org
+3: https://git-annex.branchable.com/

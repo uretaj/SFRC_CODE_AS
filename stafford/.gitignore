@@ -1,0 +1,13 @@
+\#*\#
+lib/secrets
+*html
+result
+cache
+jocexplore/
+jocexplore/**
+._*
+.DS_Store
+.Rproj.user
+src/bionix/sfrc*[0-9]
+src/bionix/*.docx
+src/bionix/aocs*[0-9]

@@ -1,0 +1,38 @@
+diff --git a/src/main/c/gridsstools/Makefile.in b/src/main/c/gridsstools/Makefile.in
+index cfd6e123..6fe66044 100644
+--- a/src/main/c/gridsstools/Makefile.in
++++ b/src/main/c/gridsstools/Makefile.in
+@@ -1,5 +1,3 @@
+-include htslib/htslib_static.mk
+-
+ all: gridsstools test
+ 
+ CC = @CC@
+@@ -16,15 +14,12 @@ COBJ = \
+ 	extractFragmentsToFastq.o \
+ 	extractFragmentsToBam.o \
+ 	unmappedSequencesToFastq.o \
+-	fastq.o 
++	fastq.o
+ 
+ TEST_DIR = ../../../test/resources/
+ 
+-htslib:
+-	$(MAKE) -C htslib libhts.a
+-
+-gridsstools: htslib $(COBJ)
+-	$(CC) $(HTSLIB_LDFLAGS) $(LDFLAGS) -o $@ $(COBJ) htslib/libhts.a $(LIBS) $(HTSLIB_static_LIBS)
++gridsstools: $(COBJ)
++	$(CC) $(HTSLIB_LDFLAGS) $(LDFLAGS) -o $@ $(COBJ) $(LIBS) $(HTSLIB_CPPFLAGS) -lhts
+ 
+ test: \
+ 	testUnmappedSequencesToFastq \
+@@ -52,7 +47,7 @@ testExtractFragmentsToFastq: gridsstools
+ 	diff $(TEST_DIR)/extractFragmentsToFastq/in.sam.out.1.fq testExtractFragmentsToFastq.out.1.fq > testExtractFragmentsToFastq.1.diff
+ 	diff $(TEST_DIR)/extractFragmentsToFastq/in.sam.out.2.fq testExtractFragmentsToFastq.out.2.fq > testExtractFragmentsToFastq.2.diff
+ 	rm testExtractFragmentsToFastq.*
+-	
++
+ testExtractFragmentsToBam: gridsstools
+ 	./gridsstools extractFragmentsToBam \
+ 		-@ 16 \

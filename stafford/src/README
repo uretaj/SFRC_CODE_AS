@@ -1,0 +1,3 @@
+This directory contains all software and expressions relating to the project.
+You probably want the `bionix/` directory, which contains all the expressions
+for the pipeline, individual samples, and cohort analysis.

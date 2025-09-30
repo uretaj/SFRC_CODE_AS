@@ -1,0 +1,120 @@
+with import ./milton-slurm.nix {}; let
+  samples = [
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "kG/p5/SHA256E-s1236261133--d193d458de5382064b489e67ef07e18932e91e933585e1efce8bdd40729cbf25.gz/SHA256E-s1236261133--d193d458de5382064b489e67ef07e18932e91e933585e1efce8bdd40729cbf25.gz";
+      r2 = "5P/FG/SHA256E-s1235987231--eb166105f183ab5ef18e097bd899ebbe141373e1c3301fb20ff38d489e023a05.gz/SHA256E-s1235987231--eb166105f183ab5ef18e097bd899ebbe141373e1c3301fb20ff38d489e023a05.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "3F/Fv/SHA256E-s1288429800--f0d085386a18289271e21ddb48adde9a4f3ef71daed52998b95eccd685f6a6b6.gz/SHA256E-s1288429800--f0d085386a18289271e21ddb48adde9a4f3ef71daed52998b95eccd685f6a6b6.gz";
+      r2 = "4M/3P/SHA256E-s1290993882--2913cfd5dae63b2e09373935927f6000cb09c2b44d81b0824d93f1b933b33f32.gz/SHA256E-s1290993882--2913cfd5dae63b2e09373935927f6000cb09c2b44d81b0824d93f1b933b33f32.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "zZ/Gg/SHA256E-s1301375618--949b9f21002911d1b5bdf6eddcd12d13ed8c9df8e5343792b43833d6b723dcc2.gz/SHA256E-s1301375618--949b9f21002911d1b5bdf6eddcd12d13ed8c9df8e5343792b43833d6b723dcc2.gz";
+      r2 = "wq/4P/SHA256E-s1306024061--ab90d65b34f71d5e8cbbde8b1d25b1e5e042869755b01ca1d302d07a30720953.gz/SHA256E-s1306024061--ab90d65b34f71d5e8cbbde8b1d25b1e5e042869755b01ca1d302d07a30720953.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "Xw/2J/SHA256E-s1329032399--b5c71bbd4b6e670b214eddfe71972083ef20f02a09c13979d113b3da9598191d.gz/SHA256E-s1329032399--b5c71bbd4b6e670b214eddfe71972083ef20f02a09c13979d113b3da9598191d.gz";
+      r2 = "X2/1q/SHA256E-s1332670398--522cd92ea6a221c6e81e8db71634ee68a27034993088109ac4606ec56c4882e0.gz/SHA256E-s1332670398--522cd92ea6a221c6e81e8db71634ee68a27034993088109ac4606ec56c4882e0.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "zj/9M/SHA256E-s1345793963--6f002e69261bd1c848b9a7e52f01c728482d58629c997192ad98303ef92d5573.gz/SHA256E-s1345793963--6f002e69261bd1c848b9a7e52f01c728482d58629c997192ad98303ef92d5573.gz";
+      r2 = "K0/64/SHA256E-s1350045891--3e27d608db165d334a0a724c6353349f678f69b2da2394367913cd32832a0739.gz/SHA256E-s1350045891--3e27d608db165d334a0a724c6353349f678f69b2da2394367913cd32832a0739.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "g0/P6/SHA256E-s1293008971--d2c34880897acf6ddd3327db39c9373f1abeac1515063747fbf4a81a3d1c6a38.gz/SHA256E-s1293008971--d2c34880897acf6ddd3327db39c9373f1abeac1515063747fbf4a81a3d1c6a38.gz";
+      r2 = "vJ/G9/SHA256E-s1292567452--1cc8b8d5bf49bbf5c6fbf019f05df54ec2c0d61c49469cd029e56fa7d3796055.gz/SHA256E-s1292567452--1cc8b8d5bf49bbf5c6fbf019f05df54ec2c0d61c49469cd029e56fa7d3796055.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "q1/f4/SHA256E-s1330708661--a47618b4b7fba2198c2836252f8640b8f4fdcc5caf653234d854e22c79f26b5e.gz/SHA256E-s1330708661--a47618b4b7fba2198c2836252f8640b8f4fdcc5caf653234d854e22c79f26b5e.gz";
+      r2 = "qw/2v/SHA256E-s1334222626--899a5501a4586df106b99a2f37484d02b9c7831d06493fb1cab0f92e6bd17a92.gz/SHA256E-s1334222626--899a5501a4586df106b99a2f37484d02b9c7831d06493fb1cab0f92e6bd17a92.gz";
+    }
+
+    {
+      site = "1E";
+      class = "tumours";
+      pdx = false;
+      r1 = "1w/Xz/SHA256E-s1267045257--75cbcf249b7bbc61c07ebcd53c6ce8b7620f47528e65b9367049c53b3ce3f104.gz/SHA256E-s1267045257--75cbcf249b7bbc61c07ebcd53c6ce8b7620f47528e65b9367049c53b3ce3f104.gz";
+      r2 = "71/7p/SHA256E-s1265418498--5e4a33c3a9679589bba421dda7ee4d860da6ad02594638b91a13e402df67c11d.gz/SHA256E-s1265418498--5e4a33c3a9679589bba421dda7ee4d860da6ad02594638b91a13e402df67c11d.gz";
+    }
+
+    {
+      site = "GL";
+      class = "normals";
+      pdx = false;
+      r1 = "4X/Qk/SHA256E-s660745429--2b870cc128d91c3f5e5329ed93bf88df012a0bdb72810923cd33da298b47b3eb.gz/SHA256E-s660745429--2b870cc128d91c3f5e5329ed93bf88df012a0bdb72810923cd33da298b47b3eb.gz";
+      r2 = "Wf/79/SHA256E-s663862988--cc3e77a0e8974c5c28754075721639e0fc71e8029ae5f752cfb35e64e8eb4020.gz/SHA256E-s663862988--cc3e77a0e8974c5c28754075721639e0fc71e8029ae5f752cfb35e64e8eb4020.gz";
+    }
+
+    {
+      site = "GL";
+      class = "normals";
+      pdx = false;
+      r1 = "Q1/9g/SHA256E-s664109823--03d6e3c4afd46762ffc7d556cbf6db822d837764b248c785a92257f73627a483.gz/SHA256E-s664109823--03d6e3c4afd46762ffc7d556cbf6db822d837764b248c785a92257f73627a483.gz";
+      r2 = "j9/X9/SHA256E-s671714661--5c482b81f0b4d8341f1eb1d8dd90d8aa49f7d68aa391df75ea0b9ff82f36ff51.gz/SHA256E-s671714661--5c482b81f0b4d8341f1eb1d8dd90d8aa49f7d68aa391df75ea0b9ff82f36ff51.gz";
+    }
+
+    {
+      site = "GL";
+      class = "normals";
+      pdx = false;
+      r1 = "wk/63/SHA256E-s654967545--5880c7b846de9d785a0753eb0e9c586e55f830d80d1179db7f04db8361f66a73.gz/SHA256E-s654967545--5880c7b846de9d785a0753eb0e9c586e55f830d80d1179db7f04db8361f66a73.gz";
+      r2 = "8f/66/SHA256E-s660547710--2542511ea2f35f9345d5ca4522605d8d65be2769fbbfb25ddfbcb09e75e72926.gz/SHA256E-s660547710--2542511ea2f35f9345d5ca4522605d8d65be2769fbbfb25ddfbcb09e75e72926.gz";
+    }
+
+    {
+      site = "GL";
+      class = "normals";
+      pdx = false;
+      r1 = "JK/Vx/SHA256E-s694590178--e5eb42b4ce7dc477c977b2ac6ade8b7f06cfde7badd7128fd36a76a6b736f208.gz/SHA256E-s694590178--e5eb42b4ce7dc477c977b2ac6ade8b7f06cfde7badd7128fd36a76a6b736f208.gz";
+      r2 = "kf/kg/SHA256E-s705855752--0dded54ab7c47395a174aa296bd500e06b0e06ecbebface2d84000dceabec10d.gz/SHA256E-s705855752--0dded54ab7c47395a174aa296bd500e06b0e06ecbebface2d84000dceabec10d.gz";
+    }
+
+    {
+      site = "S1_T1_22384";
+      class = "tumours";
+      pdx = true;
+      r1 = "pw/fq/SHA256E-s3898234654--51c98ed5356f60bcf5880ce662363eaafb056d94a276732c919c6712470a3515.gz/SHA256E-s3898234654--51c98ed5356f60bcf5880ce662363eaafb056d94a276732c919c6712470a3515.gz";
+      r2 = "9z/Xx/SHA256E-s3940635852--dd0c78a8208be71a7d73d51200fc86a8b7fc6cf9b14777e7b533016ad0c789f3.gz/SHA256E-s3940635852--dd0c78a8208be71a7d73d51200fc86a8b7fc6cf9b14777e7b533016ad0c789f3.gz";
+    }
+    {
+      site = "S1_T1_22384";
+      class = "tumours";
+      pdx = true;
+      r1 = "9p/q7/SHA256E-s3902299073--9cb82b20f73066ab842c9474834c2f66ff4cf7a8e4314a6572b6ebe40445412d.gz/SHA256E-s3902299073--9cb82b20f73066ab842c9474834c2f66ff4cf7a8e4314a6572b6ebe40445412d.gz";
+      r2 = "VV/PF/SHA256E-s3951400956--aa7c1e8c4ad49cd5e36b697ce30c4a7d74fd2d33623478fa3f8268695472d7d0.gz/SHA256E-s3951400956--aa7c1e8c4ad49cd5e36b697ce30c4a7d74fd2d33623478fa3f8268695472d7d0.gz";
+    }
+  ];
+in
+  bionix.callBionix ./multisample.nix {
+    inherit samples;
+    name = "SOL2_0093";
+    typeHla = true;
+    capture = TwistV2HR;
+  }
